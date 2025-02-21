@@ -1,0 +1,22 @@
+
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+            mavenCentral()
+    }
+}
+
+dependencyResolutionManagement {
+    repositories {
+            mavenCentral()
+    }
+}
+
+rootProject.name = 'acme'
+
+
+include 'acme-app'
+project(':acme-app').projectDir = new File('app')
+
+include 'acme-sql'
+project(':acme-sql').projectDir = new File('sql')

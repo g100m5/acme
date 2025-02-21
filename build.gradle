@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+}
+
+group = 'uz.acme'
+version = '0.0.1-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+subprojects({
+    apply plugin: 'java'
+    apply plugin: 'java-library'
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+
+    dependencies {
+
+    }
+
+    configurations {
+        configureEach {
+            implementation.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+            implementation.exclude group: 'ch.qos.logback', module: 'logback-classic'
+        }
+        integrationTestImplementation.extendsFrom testImplementation
+        integrationTestCompileOnly.extendsFrom testCompileOnly
+    }
+
+})
+

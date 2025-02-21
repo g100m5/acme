@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  app:
+    build:
+      dockerfile: Dockerfile
+    container_name: acme-java-app
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/acme
+      SPRING_DATASOURCE_USERNAME: acme
+      SPRING_DATASOURCE_PASSWORD: acme
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:latest
+    container_name: acme-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: acme
+      POSTGRES_PASSWORD: acme
+      POSTGRES_DB: acme
+    ports:
+      - "5432:5432"
