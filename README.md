@@ -16,6 +16,7 @@ A simple REST API to work with users and their transactions.
 ## How to start the project
 
 ```sh
+./gradlew assemble
 docker compose up -d
 ./gradlew lqbUpdate
 ```
