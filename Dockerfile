@@ -2,8 +2,10 @@ FROM amazoncorretto:17-alpine
 
 WORKDIR /app
 
-COPY /app/build/libs/acme-app.jar /app/acme-app.jar
+COPY . /app
+
+RUN ./gradlew assemble
 
 EXPOSE 8080
 
-CMD ["java", "-jar", "/app/acme-app.jar"]
+CMD ./gradlew lqbUpdate && java -jar ./app/build/libs/acme-app.jar
